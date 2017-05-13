@@ -3,13 +3,13 @@ import java.util.*;
 
 
 public class Board extends Object{
-	Random generator = new Random();
-	int seedCol = AdventureGame.DEFAULT_COLS, randomCol = generator.nextInt(seedCol);
-	int seedRow = AdventureGame.DEFAULT_ROWS, randomRow = generator.nextInt(seedRow);
+	private Random generator = new Random();
+	private int seedCol = AdventureGame.DEFAULT_COLS, randomCol = generator.nextInt(seedCol);
+	private int seedRow = AdventureGame.DEFAULT_ROWS, randomRow = generator.nextInt(seedRow);
 	int totalCaves = (AdventureGame.DEFAULT_ROWS*AdventureGame.DEFAULT_COLS);
 	
-	int rows, cols;
-	Cave[][] caves;
+	private int rows, cols;
+	private Cave[][] caves;
 	
 	
 	
@@ -27,11 +27,11 @@ public class Board extends Object{
 	
 	
 	 
-	Cave[][] newBoardofCaves(int r, int c){
+	Cave[][] newBoardofCaves(int _rows, int _columns){
 		
 		int counter = 0;
 		
-		Cave[][] board = new Cave[r][c];
+		Cave[][] board = new Cave[_rows][_columns];
 
 		System.out.println("MAKING A BOARD " + AdventureGame.DEFAULT_ROWS + AdventureGame.DEFAULT_COLS);
 		
@@ -68,7 +68,7 @@ public class Board extends Object{
 	}
 	
 	
-	
+	// Find a location in the grid that is unoccupied,
 	Cave getUnoccupiedOpenLocation(){
 		System.out.println("Finding unoccupied Location.");
 		int row = 4, col = 4;
@@ -79,9 +79,9 @@ public class Board extends Object{
 		
 				System.out.println("Looking for Unoccupied Location at " + varRow +","+varCol);
 		
-				if(caves[varRow][varCol].open == true && caves[varRow][varCol].pit == false &&
+				if(caves[varRow][varCol].open && !caves[varRow][varCol].pit &&
 							caves[varRow][varCol].blocked == false && caves[varRow][varCol].occupied == false 
-							&&(caves[varRow][varCol].getRow() !=AdventureGame.DEFAULT_ROWS && caves[varRow][varCol].getCol() !=AdventureGame.DEFAULT_COLS)){
+							&&(caves[varRow][varCol].getRows() !=AdventureGame.DEFAULT_ROWS && caves[varRow][varCol].getCols() !=AdventureGame.DEFAULT_COLS)){
 					row = varRow;
 					col = varCol;
 					System.out.println("Unoccupied Location at " + varRow +","+varCol);
@@ -103,7 +103,7 @@ public class Board extends Object{
 	}
 	
 	
-	//Cave(int r, int c,boolean open, boolean teleport, boolean blocked, boolean pit)
+	//Cave(int rows, int columns,boolean open, boolean teleport, boolean blocked, boolean pit)
 	Cave newOpenCave(int r, int c){
 		Cave randOpenCave = new Cave(r, c, true, false, false, false, false);
 		System.out.println("Open Cave Made at " +r+","+c);
@@ -147,13 +147,13 @@ public class Board extends Object{
 	
 	
 	/*
-	Cave[][] newRandCaveArray(int r, int c){
+	Cave[][] newRandCaveArray(int rows, int columns){
 		StringBuilder sb = new  StringBuilder();
 		
 		List<String> usedCells = new ArrayList<String>();
-		int total = r*c, counter = 0;
+		int total = rows*columns, counter = 0;
 		int open = (total/2)-2, tele = (total/10), blocked = (total/5), pit = (total/5);
-		Cave[][] randCave = new Cave[r][c];
+		Cave[][] randCave = new Cave[rows][columns];
 		
 		randCave[0][0] = newOpenCave(0,0);
 		randCave[(AdventureGame.DEFAULT_ROWS-1)][(AdventureGame.DEFAULT_COLS-1)] = 

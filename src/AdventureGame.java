@@ -107,11 +107,11 @@ public class AdventureGame implements KeyListener,MouseListener,WindowListener {
 		
 		// Get a location for the miner and add him.
 		Cave minerLoc = gameBoard.getUnoccupiedOpenLocation();
-		characters.add(new Miner(gameBoard.getCave(minerLoc.getRow(), minerLoc.getCol())));
+		characters.add(new Miner(gameBoard.getCave(minerLoc.getRows(), minerLoc.getCols())));
 		
 		// Get a location for the filler and add him.
 		Cave fillerLoc = gameBoard.getUnoccupiedOpenLocation();
-		characters.add(new Filler(gameBoard.getCave(fillerLoc.getRow(), fillerLoc.getCol())));
+		characters.add(new Filler(gameBoard.getCave(fillerLoc.getRows(), fillerLoc.getCols())));
 		
 		// We seek the treasure!
 		treasureClaimed = false;
@@ -157,18 +157,18 @@ public class AdventureGame implements KeyListener,MouseListener,WindowListener {
 			Cave c = ch.getLocation();
 			if (ch instanceof Adventurer){
 				System.out.println("Adventurer");
-				grid[c.getRow()][c.getCol()].setIcon("icons64/hat.png");
+				grid[c.getRows()][c.getCols()].setIcon("icons64/hat.png");
 			}
 			else if (ch instanceof Miner){
 				System.out.println("Miner");
-				grid[c.getRow()][c.getCol()].setIcon("icons64/pickaxe.png");
+				grid[c.getRows()][c.getCols()].setIcon("icons64/pickaxe.png");
 			}
 			else if (ch instanceof Filler){
 				System.out.println("Filler");
- 				grid[c.getRow()][c.getCol()].setIcon("icons64/wheelbarrow.png");
+ 				grid[c.getRows()][c.getCols()].setIcon("icons64/wheelbarrow.png");
 			}
 			if (idx++==selected) {
-				grid[c.getRow()][c.getCol()].
+				grid[c.getRows()][c.getCols()].
 					setBorder(BorderFactory.createBevelBorder(1, Color.red, Color.red));
 			}
 		}
@@ -227,11 +227,11 @@ public class AdventureGame implements KeyListener,MouseListener,WindowListener {
 		// Make the move.
 		Character ch = characters.get(selected);
 		Cave c = ch.getLocation();
-		if (gameBoard.ok(c.getRow()+dr,c.getCol()+dc)) {
-			Cave newC = gameBoard.getCave(c.getRow()+dr, c.getCol()+dc);
+		if (gameBoard.ok(c.getRows()+dr,c.getCols()+dc)) {
+			Cave newC = gameBoard.getCave(c.getRows()+dr, c.getCols()+dc);
 			
 			// Make sure only the adventurer moves to the treasure.
-			if (newC.getRow()==DEFAULT_ROWS-1 && newC.getCol()==DEFAULT_COLS-1 &&
+			if (newC.getRows()==DEFAULT_ROWS-1 && newC.getCols()==DEFAULT_COLS-1 &&
 					!(ch instanceof Adventurer)) {
 				SoundEffects.PREVENT.play();
 				updateStatus("Only the adventurer can claim the treasure!");
@@ -282,8 +282,8 @@ public class AdventureGame implements KeyListener,MouseListener,WindowListener {
 					updateGameBoard();
 				}
 				
-				if (!treasureClaimed && newC.getRow()==DEFAULT_ROWS-1 && 
-						newC.getCol()==DEFAULT_COLS-1 && ch instanceof Adventurer) {
+				if (!treasureClaimed && newC.getRows()==DEFAULT_ROWS-1 &&
+						newC.getCols()==DEFAULT_COLS-1 && ch instanceof Adventurer) {
 					treasureClaimed = true;
 					updateGameBoard();
 					
@@ -295,12 +295,12 @@ public class AdventureGame implements KeyListener,MouseListener,WindowListener {
 					
 					Cave x = gameBoard.getUnoccupiedOpenLocation();
 					x.makeStairs();
-					STAIRS_ROWS = x.getRow();
-					STAIRS_COLS = x.getCol();
+					STAIRS_ROWS = x.getRows();
+					STAIRS_COLS = x.getCols();
 					updateGameBoard();
 					
 				}
-				if(treasureClaimed == true && newC.getRow() == STAIRS_ROWS && newC.getCol()== STAIRS_COLS && ch instanceof Adventurer){
+				if(treasureClaimed == true && newC.getRows() == STAIRS_ROWS && newC.getCols()== STAIRS_COLS && ch instanceof Adventurer){
 					
 					
 //Restart the Cave				
@@ -347,7 +347,7 @@ public class AdventureGame implements KeyListener,MouseListener,WindowListener {
 			int idx=0;
 			for (Character ch : characters) {
 				Cave c = ch.getLocation();
-				if (c.getRow()==row && c.getCol()==col) {
+				if (c.getRows()==row && c.getCols()==col) {
 					selected=idx;
 					updateGameBoard();
 					updateStatus("You have selected " + ch.getName());

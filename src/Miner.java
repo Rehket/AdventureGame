@@ -4,7 +4,7 @@ public class Miner extends Character{
 	public Miner(Cave initLoc) {
 		super(initLoc);
 		name = getName();
-		//System.out.println("Making Miner at "+ initLoc.getRow() + "," + initLoc.getCol());
+		//System.out.println("Making Miner at "+ initLoc.getRows() + "," + initLoc.getCol());
 		initLoc.occupied = true;
 	}
 

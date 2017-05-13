@@ -1,15 +1,16 @@
 import java.util.Random;
 
 public class Cave {
-	Random generator = new Random();
-	int seed = 4, randomNum = generator.nextInt(seed)+1;
+
+	private Random generator = new Random();
+	private int seed = 4, randomNum = generator.nextInt(seed)+1;
 	
-	int r, c;
+	private int rows, columns;
 	boolean marker, open, occupied, blocked, pit, teleport, stairs;
 	
 	public Cave(int r, int c){
-		this.r = r;
-		this.c = c;
+		this.rows = r;
+		this.columns = c;
 		
 		
 		
@@ -24,9 +25,9 @@ public class Cave {
 		
 	}
 	
-	public Cave(int r, int c,boolean open, boolean teleport, boolean blocked, boolean pit, boolean stairs){
-		this.r = r;
-		this.c = c;
+	public Cave(int _rows, int _columns, boolean open, boolean teleport, boolean blocked, boolean pit, boolean stairs){
+		this.rows = _rows;
+		this.columns = _columns;
 		
 		
 		
@@ -40,16 +41,16 @@ public class Cave {
 		
 	}
 	
-	public static enum CaveType { BLOCKED, OPEN, PIT, TELEPORT;}
+	public enum CaveType { BLOCKED, OPEN, PIT, TELEPORT;}
 
 	public static Cave initLoc = new Cave (0,0);
 	
-	int getRow(){
-		return r;
+	int getRows(){
+		return rows;
 	}
 	
-	int getCol(){
-		return c;
+	int getCols(){
+		return columns;
 	}
 
 	public boolean isStairs() {
@@ -130,13 +131,7 @@ public class Cave {
 	void setOccupied(boolean set){
 		occupied = set;
 	}
-	
-	
-	
-	
-	
-	
-	
+
 }
 
 

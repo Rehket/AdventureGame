@@ -5,7 +5,7 @@ String name; int nameNum = 0;
 	public Filler(Cave initLoc) {
 		super(initLoc);
 		name = getName();
-		System.out.println("Making Filler at "+ initLoc.getRow() + "," + initLoc.getCol());
+		System.out.println("Making Filler at "+ initLoc.getRows() + "," + initLoc.getCols());
 		initLoc.occupied = true;
 		System.out.println("Making Filler");
 	}
