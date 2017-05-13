@@ -1,31 +1,33 @@
 
 public class Adventurer extends Character{
 	String name; int nameNum = 0;
-	
-	public Adventurer(Cave initLoc) {
-		super(initLoc);
+
+	// Make a new adventure.
+	public Adventurer(Cave initialLocation) {
+		super(initialLocation);
 		name = getName();
-		initLoc.occupied = true;
+		initialLocation.occupied = true;
 	}
 
-	
-	public boolean modifyCave(Cave newC) {
-		if(newC.teleport == true){
-			newC.marker = true;
+
+	// If the adventure steps on a teleporter, show the teleporter sprite.
+	public boolean modifyCave(Cave _cave) {
+		if(_cave.teleport){
+			_cave.marker = true;
 			return true;
 		}
 		else return false;
 	}
 
 	
-	
+	// If the adventure steps on a teleporter, show the teleporter sprite and play the sound.
 	public String describeModification() {
 		SoundEffects.TELE.play();
 		return "Discovered a Portal!";
 	}
 	
-
-String getName() {
+	// Going to have a name generator at some point.
+	public String getName() {
 		
 		if(nameNum == 0){
 			//Random names pop up.

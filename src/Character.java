@@ -2,7 +2,8 @@
 
 
 public abstract class Character extends Object implements CaveWorker {
-	Cave loc;
+	protected Cave loc;
+
 	public Character(Cave initLoc){
 		this.loc = initLoc;
 		
@@ -17,31 +18,30 @@ public abstract class Character extends Object implements CaveWorker {
 
 	
 	
-	
-	public boolean move(Cave to) {
-		boolean y = false;
+	//Attempt to move to cave location.
+	public boolean move(Cave _targetCaveSpace) {
+		boolean canMoveToCave = false;
 		
-		if(to.occupied == false && to.blocked == false){
+		if(!_targetCaveSpace.occupied && !_targetCaveSpace.blocked){
 			this.loc.occupied = false;
-			this.loc = to;
-			to.occupied = true;
-			y = true;
+			this.loc = _targetCaveSpace;
+			_targetCaveSpace.occupied = true;
+			canMoveToCave = true;
 		}
 		
-		else if(to.occupied == false && to.blocked == true){
-			if (this.modifyCave(to) == true){
+		else if(!_targetCaveSpace.occupied && _targetCaveSpace.blocked){
+			if (this.modifyCave(_targetCaveSpace) == true){
 				SoundEffects.MINE.play();
 				this.loc.occupied = false;
-				to.blocked = false;
-				to.open = true;
-				to.occupied = true;
-				y = true;
-				this.loc = to;
+				_targetCaveSpace.blocked = false;
+				_targetCaveSpace.open = true;
+				_targetCaveSpace.occupied = true;
+				canMoveToCave = true;
+				this.loc = _targetCaveSpace;
 			}
 		}
-		
-		
-		return y;
+
+		return canMoveToCave;
 		
 	}
 	

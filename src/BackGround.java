@@ -19,14 +19,17 @@ import java.util.Random;
 
 
 @SuppressWarnings("serial")
+
+// This is the class for the background of the space game.
 public class BackGround extends JPanel implements ActionListener,KeyListener{
 	private static Timer timer;
 	private Ship ship;
 	private boolean inGame;
-	public static int enemiesTime = 0;
-	public static int enemiesEnct = 0;
-	public static int score = 0;
+	private static int enemiesTime = 0;
+	private static int enemiesEnct = 0;
+	private static int score = 0;
 	private ArrayList<Enemies> enemies;
+	// Background Constructor
 	public BackGround(){
 			addKeyListener(new TAdapter());
 	        setFocusable(true);

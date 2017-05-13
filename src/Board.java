@@ -17,7 +17,7 @@ public class Board extends Object{
 		this.rows = rows;
 		this.cols = cols;
 		System.out.println(rows + cols);
-		this.caves = newBoardofCaves(rows, cols);
+		this.caves = newBoardOfCaves(rows, cols);
 		
 		/*System.out.println("Open is " + caves[0][0].open);
 		System.out.println("Blocked is " + caves[0][0].blocked);
@@ -27,7 +27,7 @@ public class Board extends Object{
 	
 	
 	 
-	Cave[][] newBoardofCaves(int _rows, int _columns){
+	Cave[][] newBoardOfCaves(int _rows, int _columns){
 		
 		int counter = 0;
 		

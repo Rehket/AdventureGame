@@ -7,6 +7,8 @@ import javax.sound.midi.MidiUnavailableException;
 import javax.sound.midi.Sequence;
 import javax.sound.midi.Sequencer;
 
+
+// The class to play the music.
 public class Song {
 	
 	Sequencer player;
