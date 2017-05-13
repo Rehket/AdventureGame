@@ -1,7 +1,7 @@
 # Adventure Game
 
 This project was an assignment for my Object Oriented Programming Class
-at University of Central Florida with Professor Nadeem Mohsi.
+at University of Central Florida with Professor Nadeem Mohsin.
 
 ## The Initial Project
 
