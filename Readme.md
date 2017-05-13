@@ -34,3 +34,10 @@ The details of my initial extension are below.
        -Add Ship Upgrades/Power-Ups
        -Add new ships
        -Add new Enemies
+
+
+## TODO:
+
+    -Old Code Clean-Up
+    -Make a sound handler class.
+    -Make a sprite class.
