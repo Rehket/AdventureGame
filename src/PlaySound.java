@@ -16,7 +16,7 @@ public class PlaySound extends JFrame {
 	
 	public PlaySound(){
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setTitle("Play That Sound");
+		this.setTitle("Play That SoundManager");
 		this.setSize(600, 600);
 		this.setVisible(true);
 		

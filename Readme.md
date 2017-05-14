@@ -41,3 +41,22 @@ The details of my initial extension are below.
     -Old Code Clean-Up
     -Make a sound handler class.
     -Make a sprite class.
+
+
+## Features In Progress
+### This area my be used for spitballing ideas.
+
+
+Adding A sound class to handle all sounds.
+
+**Sound Class Functions:**
+
+    -Add sound cues to a map of sound cues
+    -Provide a way to play the sound queues.
+    -Load batches of the sound cues.
+    -
+
+**Sound Cue Functions:**
+
+    -Uses sound Cues to store the individual sounds.
+    -Get deatils about the sound cue such as length.

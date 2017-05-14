@@ -18,6 +18,7 @@ public class MainMenu implements ActionListener, WindowListener{
 	private JButton advGame;
 	private JButton spaceGame;
 	private JTextField text;
+	//
 	public static Song RAIDERS = new Song("raiders.mid");
 	
     public MainMenu() {
@@ -51,10 +52,10 @@ public class MainMenu implements ActionListener, WindowListener{
  
     @SuppressWarnings("resource")
 	public static void main(String[] args) throws Exception {
-    	 java.io.File file = new java.io.File("logging.txt"); 
-    	 Scanner sc = new Scanner(file);
-    	 unlocks = sc.nextInt();
-    	Song.playSong(RAIDERS);
+		java.io.File file = new java.io.File("logging.txt");
+		Scanner sc = new Scanner(file);
+		unlocks = sc.nextInt();
+		Song.playSong(RAIDERS);
     	
                 new MainMenu();
         
@@ -66,12 +67,13 @@ public class MainMenu implements ActionListener, WindowListener{
 		if(event.getSource() == advGame){
 			try {
 				new AdventureGame();
+				main.setState(Frame.ICONIFIED);
 				
 			} catch (FileNotFoundException e) {
 				
 				e.printStackTrace();
 			}
-			
+			// TODO: Switch to soind Class
 			Song.stopSong(RAIDERS);
 			main.dispose();
 		}
